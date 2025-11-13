@@ -682,7 +682,20 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
-        --
+        pylsp = {
+          settings = {
+            plugins = {
+              pyflakes = {enabled = false},
+              pycodestyle = {enabled = false},
+              autopep8 = {enabled = false},
+              yapf = {enabled = false},
+              mccabe = {enabled = false},
+              pylsp_mypy = {enabled = false},
+              pylsp_black = {enabled = false},
+              pylsp_isort = {enabled = false},
+            },
+          },
+        },
 
         lua_ls = {
           -- cmd = { ... },
@@ -846,7 +859,7 @@ require('lazy').setup({
       ---@diagnostic disable-next-line: missing-fields
       require('tokyonight').setup {
         styles = {
-          comments = { italic = false }, -- Disable italics in comments
+          comments = { italic = true }, -- Disable italics in comments
         },
       }
 
@@ -903,7 +916,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'python', 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -971,5 +984,8 @@ require('lazy').setup({
   },
 })
 
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
